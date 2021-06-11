@@ -5,3 +5,19 @@
     box-sizing: border-box;
     font-size: 62.5%;
 }
+
+/* style the header */
+header {
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    background-color: rgb(75,105,177);
+    background-image: linear-gradient(90deg, rgba(75,105,177,1) 13%, rgba(35,77,167,1) 42%, rgba(1,1,105,1) 80%);
+}
+
+/* style the heading */
+.heading {
+    color:white;
+    font-size: 4rem;
+    font-weight: bold;
+}
