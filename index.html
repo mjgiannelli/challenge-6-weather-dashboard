@@ -12,9 +12,18 @@
 
 <body>
 
-    <header>
-        <h1 class="h1 heading">Weather Dashboard</h1>
-    </header>
+    <header class="heading">Weather Dashboard</header>
+
+    <main class='container'>
+        <div class='row'>
+            <div id='search-area' class='col-4'>
+                <h1 class='h1'>Search for a City:</h1>
+                <input type="text" placeholder="Austin" id='city' class='city-input' />
+                <button type="button" id='search-btn' class='btn'>Search</button>
+            </div>
+        </div>
+
+    </main>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
