@@ -49,6 +49,8 @@ function getWeather(city) {
                             if (weatherResponse.ok) {
                                 weatherResponse.json().then(function (weatherData) {
                                     console.log(weatherData);
+                                    // store the city that was searched in local storage
+                                    localStorage.setItem(city, city);
                                 })
                             }
                         })
