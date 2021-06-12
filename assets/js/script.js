@@ -24,23 +24,34 @@
 // START GLOBAL VARIABLES //
 var openWeatherApiKey = '26ba3a7e283acb9cd1e8665c6c3b319a';
 var openWeatherCoordinatesUrl = 'https://api.openweathermap.org/data/2.5/weather?q=';
+var oneCallUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat='
 var userFormEL = $('#city-search');
 var cityInputEl = $('#city');
 
 // END GLOBAL VARIABLES //
 
 //function to get weather data from apiUrl
-function getCoordinates(city) {
-    var apiUrl = openWeatherCoordinatesUrl + city + '&appid=' + openWeatherApiKey;
-
-    fetch(apiUrl)
+function getWeather(city) {
+    // apiUrl for coordinates
+    var apiCoordinatesUrl = openWeatherCoordinatesUrl + city + '&appid=' + openWeatherApiKey;
+    // fetch the coordinates for parameter city
+    fetch(apiCoordinatesUrl)
         .then(function (coordinateResponse) {
             if (coordinateResponse.ok) {
                 coordinateResponse.json().then(function (data) {
                     var cityLatitude = data.coord.lat;
                     var cityLongitude = data.coord.lon;
+                    // fetch weather information
+                    var apiOneCallUrl = oneCallUrl + cityLatitude + '&lon=' + cityLongitude + '&appid=' + openWeatherApiKey;
 
-                    console.log(cityLatitude + ', ' + cityLongitude);
+                    fetch(apiOneCallUrl)
+                        .then(function (weatherResponse) {
+                            if (weatherResponse.ok) {
+                                weatherResponse.json().then(function (weatherData) {
+                                    console.log(weatherData);
+                                })
+                            }
+                        })
                 });
             } else {
                 alert('Error: Open Weather could not find city')
@@ -58,7 +69,7 @@ function submitCitySearch(event) {
     var city = cityInputEl.val().trim();
 
     if (city) {
-        getCoordinates(city);
+        getWeather(city);
         cityInputEl.val = '';
     } else {
         alert('Please enter a city');
