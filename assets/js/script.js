@@ -29,6 +29,7 @@ var userFormEL = $('#city-search');
 var cityInputEl = $('#city');
 var currentWeatherEl = $('#current-weather');
 var currentDay = moment().format('M/DD/YYYY');
+var weatherIconUrl = 'http://openweathermap.org/img/wn/'
 
 
 // END GLOBAL VARIABLES //
@@ -57,12 +58,26 @@ function getWeather(city) {
                                     localStorage.setItem(city, city);
 
                                     // create current day weather display
+                                    // get the weather icon from city
+                                    var weatherIcon = weatherData.current.weather[0].icon;
+                                    var cityCurrentWeatherIcon = weatherIconUrl + weatherIcon + '.png';
+                                    console.log(cityCurrentWeatherIcon);
                                     // create h2 to display city + current day + current weather icon
                                     var currentWeatherHeadingEl = $('<h2>')
-                                        .text(city + ' (' + currentDay + ') ' + weatherData.current.weather[0].icon);
+                                        .text(city + ' (' + currentDay + ')');
+                                    
+                                    var iconImgEl = $('<img>')
+                                    .attr({
+                                        id: 'current-weather-icon',
+                                        src: cityCurrentWeatherIcon,
+                                        alt: 'Weather Icon'
+                                    })                                        
+
+
 
                                     //append current weather heading to current weather div
                                     currentWeatherEl.append(currentWeatherHeadingEl);
+                                    currentWeatherHeadingEl.append(iconImgEl);
 
 
                                 })
