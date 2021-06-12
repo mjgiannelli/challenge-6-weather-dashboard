@@ -19,7 +19,7 @@
 // use data in local.storage to create a button under the <hr> in search area for city history
 //  - when you click the button it displays the current and future conditions for that city
 
-// ** END PSEUDO CODE (subject to change) ** //
+// ** END PSEUDO CODE ** //
 
 // START GLOBAL VARIABLES //
 var openWeatherApiKey = '26ba3a7e283acb9cd1e8665c6c3b319a';
@@ -27,6 +27,9 @@ var openWeatherCoordinatesUrl = 'https://api.openweathermap.org/data/2.5/weather
 var oneCallUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat='
 var userFormEL = $('#city-search');
 var cityInputEl = $('#city');
+var currentWeatherEl = $('#current-weather');
+var currentDay = moment().format('M/DD/YYYY');
+
 
 // END GLOBAL VARIABLES //
 
@@ -42,15 +45,26 @@ function getWeather(city) {
                     var cityLatitude = data.coord.lat;
                     var cityLongitude = data.coord.lon;
                     // fetch weather information
-                    var apiOneCallUrl = oneCallUrl + cityLatitude + '&lon=' + cityLongitude + '&appid=' + openWeatherApiKey;
+                    var apiOneCallUrl = oneCallUrl + cityLatitude + '&lon=' + cityLongitude + '&appid=' + openWeatherApiKey + '&units=imperial';
 
                     fetch(apiOneCallUrl)
                         .then(function (weatherResponse) {
                             if (weatherResponse.ok) {
                                 weatherResponse.json().then(function (weatherData) {
                                     console.log(weatherData);
+                                    console.log(weatherData.current.weather[0].icon)
                                     // store the city that was searched in local storage
                                     localStorage.setItem(city, city);
+
+                                    // create current day weather display
+                                    // create h2 to display city + current day + current weather icon
+                                    var currentWeatherHeadingEl = $('<h2>')
+                                        .text(city + ' (' + currentDay + ') ' + weatherData.current.weather[0].icon);
+
+                                    //append current weather heading to current weather div
+                                    currentWeatherEl.append(currentWeatherHeadingEl);
+
+
                                 })
                             }
                         })
@@ -72,7 +86,7 @@ function submitCitySearch(event) {
 
     if (city) {
         getWeather(city);
-        cityInputEl.val = '';
+        cityInputEl.text = '';
     } else {
         alert('Please enter a city');
     }
