@@ -20,3 +20,50 @@
 //  - when you click the button it displays the current and future conditions for that city
 
 // ** END PSEUDO CODE (subject to change) ** //
+
+// START GLOBAL VARIABLES //
+var openWeatherApiKey = '26ba3a7e283acb9cd1e8665c6c3b319a';
+var openWeatherCoordinatesUrl = 'https://api.openweathermap.org/data/2.5/weather?q=';
+var userFormEL = $('#city-search');
+var cityInputEl = $('#city');
+
+// END GLOBAL VARIABLES //
+
+//function to get weather data from apiUrl
+function getCoordinates(city) {
+    var apiUrl = openWeatherCoordinatesUrl + city + '&appid=' + openWeatherApiKey;
+
+    fetch(apiUrl)
+        .then(function (coordinateResponse) {
+            if (coordinateResponse.ok) {
+                coordinateResponse.json().then(function (data) {
+                    var cityLatitude = data.coord.lat;
+                    var cityLongitude = data.coord.lon;
+
+                    console.log(cityLatitude + ', ' + cityLongitude);
+                });
+            } else {
+                alert('Error: Open Weather could not find city')
+            }
+        })
+        .catch(function (error) {
+            alert('Unable to connect to Open Weather');
+        });
+}
+
+function submitCitySearch(event) {
+    event.preventDefault();
+
+    //get value from user input
+    var city = cityInputEl.val().trim();
+
+    if (city) {
+        getCoordinates(city);
+        cityInputEl.val = '';
+    } else {
+        alert('Please enter a city');
+    }
+}
+
+// on click of search button get user input for city and fetch api data
+userFormEL.on('submit', submitCitySearch);
