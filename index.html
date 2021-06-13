@@ -14,71 +14,76 @@
 
     <header class="heading">Weather Dashboard</header>
 
-    <main id='container'>
-        <div id='search-area'>
-            <h1 class='h1'>Search for a City:</h1>
-            <form id='city-search'>
-                <input name='city' type="text" placeholder="Austin" id='city' autofocus='true' class='city-input' />
-                <button type="submit" id='search-btn' class='btn'>Search</button>
-            </form>
-            <hr>
-            </hr>
+    <main id='container' class="container border border-primary">
+        <div class="row border border-primary">
+            <div class="col-md-4 border border-primary">
+                <div id='search-area'>
+                    <h1 class='h1'>Search for a City:</h1>
+                    <form id='city-search'>
+                        <input name='city' type="text" placeholder="Austin" id='city' autofocus='true'
+                            class='city-input' />
+                        <button type="submit" id='search-btn' class='btn'>Search</button>
+                    </form>
+                    <hr>
+                    </hr>
+                </div>
+            </div>
+            <div class="col-md-8 border border-primary">
+                <div class="row">
+                    <div class='col-12' id='current-weather'></div>
+                </div>
+                <h2>5-Day Forecast:</h2>
+                <div id='five-day' class="row">
+                    <div class='col-md-2'>
+                        <div class='card-body'>
+                            <h3 class='card-title'>Tomorrow</h3>
+                            <img class='current-weather-icon' src='http://openweathermap.org/img/wn/01d.png'>
+                            <p class="card-text">Temp</p>
+                            <p class="card-text">Wind</p>
+                            <p class="card-text">Humidity</p>
+                        </div>
+                    </div>
+                    <div class='col-md-2'>
+                        <div class='card-body'>
+                            <h3 class='card-title'>Tomorrow</h3>
+                            <img class='current-weather-icon' src='http://openweathermap.org/img/wn/01d.png'>
+                            <p class="card-text">Temp</p>
+                            <p class="card-text">Wind</p>
+                            <p class="card-text">Humidity</p>
+                        </div>
+                    </div>
+                    <div class='col-md-2'>
+                        <div class='card-body'>
+                            <h3 class='card-title'>Tomorrow</h3>
+                            <img class='current-weather-icon' src='http://openweathermap.org/img/wn/01d.png'>
+                            <p class="card-text">Temp</p>
+                            <p class="card-text">Wind</p>
+                            <p class="card-text">Humidity</p>
+                        </div>
+                    </div>
+                    <div class='col-md-2'>
+                        <div class='card-body'>
+                            <h3 class='card-title'>Tomorrow</h3>
+                            <img class='current-weather-icon' src='http://openweathermap.org/img/wn/01d.png'>
+                            <p class="card-text">Temp</p>
+                            <p class="card-text">Wind</p>
+                            <p class="card-text">Humidity</p>
+                        </div>
+                    </div>
+                    <div class='col-md-2'>
+                        <div class='card-body'>
+                            <h3 class='card-title'>Tomorrow</h3>
+                            <img class='current-weather-icon' src='http://openweathermap.org/img/wn/01d.png'>
+                            <p class="card-text">Temp</p>
+                            <p class="card-text">Wind</p>
+                            <p class="card-text">Humidity</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id='current-weather'></div>
-        <!-- <div id='five-day' class='container'>
-            <div id='row1' class="row">
-                <h2 class='col-12'>5-Day Forecast:</h2>
-            </div>
-            <div id='row2' class="row">
-                <div class='col-2'>
-                    <div class='card-body'>
-                        <h3 class='card-title'>Tomorrow</h3>
-                        <img class='current-weather-icon' src='http://openweathermap.org/img/wn/01d.png'>
-                        <p class="card-text">Temp</p>
-                        <p class="card-text">Wind</p>
-                        <p class="card-text">Humidity</p>
-                    </div>
-                </div>
-                <div class='col-2'>
-                    <div class='card-body'>
-                        <h3 class='card-title'>Tomorrow</h3>
-                        <img class='current-weather-icon' src='http://openweathermap.org/img/wn/01d.png'>
-                        <p class="card-text">Temp</p>
-                        <p class="card-text">Wind</p>
-                        <p class="card-text">Humidity</p>
-                    </div>
-                </div>
-                <div class='col-2'>
-                    <div class='card-body'>
-                        <h3 class='card-title'>Tomorrow</h3>
-                        <img class='current-weather-icon' src='http://openweathermap.org/img/wn/01d.png'>
-                        <p class="card-text">Temp</p>
-                        <p class="card-text">Wind</p>
-                        <p class="card-text">Humidity</p>
-                    </div>
-                </div>
-                <div class='col-2'>
-                    <div class='card-body'>
-                        <h3 class='card-title'>Tomorrow</h3>
-                        <img class='current-weather-icon' src='http://openweathermap.org/img/wn/01d.png'>
-                        <p class="card-text">Temp</p>
-                        <p class="card-text">Wind</p>
-                        <p class="card-text">Humidity</p>
-                    </div>
-                </div>
-                <div class='col-2'>
-                    <div class='card-body'>
-                        <h3 class='card-title'>Tomorrow</h3>
-                        <img class='current-weather-icon' src='http://openweathermap.org/img/wn/01d.png'>
-                        <p class="card-text">Temp</p>
-                        <p class="card-text">Wind</p>
-                        <p class="card-text">Humidity</p>
-                    </div>
-                </div>
 
-            </div>
-        </div> -->
-        <div id='five-day'>
+        <!-- <div id='five-day'>
             <h2>5-Day Forecast:</h2>
             <div class = 'cards'>
                 <div class='card-body'>
@@ -127,7 +132,7 @@
             </div>
            
 
-        </div>
+        </div> -->
     </main>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
