@@ -65,20 +65,33 @@ function getWeather(city) {
                                     // create h2 to display city + current day + current weather icon
                                     var currentWeatherHeadingEl = $('<h2>')
                                         .text(city + ' (' + currentDay + ')');
-                                    
+                                    // create img element to display icon
                                     var iconImgEl = $('<img>')
-                                    .attr({
-                                        id: 'current-weather-icon',
-                                        src: cityCurrentWeatherIcon,
-                                        alt: 'Weather Icon'
-                                    })                                        
+                                        .attr({
+                                            id: 'current-weather-icon',
+                                            src: cityCurrentWeatherIcon,
+                                            alt: 'Weather Icon'
+                                        })
+                                    //create list of current weather details
+                                    var currWeatherListEl = $('<ul>')
 
+                                    var currWeatherDetails = ['Temp: ' + weatherData.current.temp + ' °F', 'Wind: ' + weatherData.current.wind_speed + ' MPH', 'Humidity: ' + weatherData.current.humidity + '%', 'UV Index ' + weatherData.current.uvi]
+
+                                    for (var i = 0; i < currWeatherDetails.length; i++) {
+                                        //create an indiviual list item and append to ul
+                                        var currWeatherListItem = $('<li>')
+                                            .text(currWeatherDetails[i])
+                                        //append to ul
+                                        currWeatherListEl.append(currWeatherListItem);
+                                    }
 
 
                                     //append current weather heading to current weather div
                                     currentWeatherEl.append(currentWeatherHeadingEl);
+                                    //append icon to current weather header
                                     currentWeatherHeadingEl.append(iconImgEl);
-
+                                    //append ul to current weather
+                                    currentWeatherEl.append(currWeatherListEl);
 
                                 })
                             }
