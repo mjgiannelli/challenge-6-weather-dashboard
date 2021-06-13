@@ -22,15 +22,16 @@
 // ** END PSEUDO CODE ** //
 
 // START GLOBAL VARIABLES //
+
 var openWeatherApiKey = '26ba3a7e283acb9cd1e8665c6c3b319a';
 var openWeatherCoordinatesUrl = 'https://api.openweathermap.org/data/2.5/weather?q=';
 var oneCallUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat='
 var userFormEL = $('#city-search');
 var cityInputEl = $('#city');
 var currentWeatherEl = $('#current-weather');
+var fiveDayEl = $('#five-day');
 var currentDay = moment().format('M/DD/YYYY');
 var weatherIconUrl = 'http://openweathermap.org/img/wn/'
-
 
 // END GLOBAL VARIABLES //
 
@@ -57,7 +58,8 @@ function getWeather(city) {
                                     // store the city that was searched in local storage
                                     localStorage.setItem(city, city);
 
-                                    // create current day weather display
+                                    // ** START CURRENT DAY DISPLAY ** //
+
                                     // get the weather icon from city
                                     var weatherIcon = weatherData.current.weather[0].icon;
                                     var cityCurrentWeatherIcon = weatherIconUrl + weatherIcon + '.png';
@@ -110,7 +112,6 @@ function getWeather(city) {
 
                                     }
 
-
                                     //append current weather heading to current weather div
                                     currentWeatherEl.append(currentWeatherHeadingEl);
                                     //append icon to current weather header
@@ -118,6 +119,11 @@ function getWeather(city) {
                                     //append ul to current weather
                                     currentWeatherEl.append(currWeatherListEl);
 
+                                    // ** END CURRENT DAY DISPLAY ** //
+
+                                    // ** START 5-DAY FORECAST DISPLAY ** //
+
+                                    
                                 })
                             }
                         })
