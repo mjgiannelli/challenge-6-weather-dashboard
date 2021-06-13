@@ -75,14 +75,39 @@ function getWeather(city) {
                                     //create list of current weather details
                                     var currWeatherListEl = $('<ul>')
 
-                                    var currWeatherDetails = ['Temp: ' + weatherData.current.temp + ' °F', 'Wind: ' + weatherData.current.wind_speed + ' MPH', 'Humidity: ' + weatherData.current.humidity + '%', 'UV Index ' + weatherData.current.uvi]
+                                    var currWeatherDetails = ['Temp: ' + weatherData.current.temp + ' °F', 'Wind: ' + weatherData.current.wind_speed + ' MPH', 'Humidity: ' + weatherData.current.humidity + '%', 'UV Index: ' + weatherData.current.uvi]
 
                                     for (var i = 0; i < currWeatherDetails.length; i++) {
                                         //create an indiviual list item and append to ul
-                                        var currWeatherListItem = $('<li>')
-                                            .text(currWeatherDetails[i])
-                                        //append to ul
-                                        currWeatherListEl.append(currWeatherListItem);
+
+
+                                        if (currWeatherDetails[i] === 'UV Index: ' + weatherData.current.uvi) {
+
+                                            var currWeatherListItem = $('<li>')
+                                                .text('UV Index: ')
+
+                                            currWeatherListEl.append(currWeatherListItem);
+
+                                            var uviItem = $('<span>')
+                                                .text(weatherData.current.uvi);
+
+                                            if (uviItem.text() <= 2) {
+                                                uviItem.addClass('favorable');
+                                            } else if (uviItem.text() > 2 && uviItem.text() <= 7) {
+                                                uviItem.addClass('moderate');
+                                            } else {
+                                                uviItem.addClass('severe');
+                                            }
+
+                                            currWeatherListItem.append(uviItem);
+
+                                        } else {
+                                            var currWeatherListItem = $('<li>')
+                                                .text(currWeatherDetails[i])
+                                            //append to ul
+                                            currWeatherListEl.append(currWeatherListItem);
+                                        }
+
                                     }
 
 

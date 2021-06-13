@@ -109,3 +109,22 @@ ul {
 img {
     filter: drop-shadow(0 0 0.75rem grey);
 }
+
+/* style the uv index background */
+.favorable {
+    background-color: green;
+    font-size: 2rem;
+    border-radius: .5rem;
+}
+
+.moderate {
+    background-color: yellow;
+    font-size: 2rem;
+    border-radius: .5rem;
+}
+
+.severe {
+    background-color: red;
+    font-size: 2rem;
+    border-radius: .5rem;
+}
