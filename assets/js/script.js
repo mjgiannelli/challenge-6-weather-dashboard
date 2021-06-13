@@ -80,7 +80,7 @@ function getWeather(city) {
                                     for (var i = 0; i < currWeatherDetails.length; i++) {
                                         //create an indiviual list item and append to ul
 
-                                        
+
                                         if (currWeatherDetails[i] === 'UV Index: ' + weatherData.current.uvi) {
 
                                             var currWeatherListItem = $('<li>')
@@ -147,3 +147,10 @@ function submitCitySearch(event) {
 
 // on click of search button get user input for city and fetch api data
 userFormEL.on('submit', submitCitySearch);
+
+// on click of search button - empty the current weather and 5-day forecast info
+$('#search-btn').on('click', function () {
+    console.log('clicked');
+    $('#current-weather').empty();
+    $('#five-day').empty();
+})
