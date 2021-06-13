@@ -156,7 +156,20 @@ function getWeather(city) {
                                                 alt: 'Weather Icon'
                                             });
 
-                                        console.log(forecastIconEl);
+                                        // create card text displaying weather details
+                                        var currWeatherDetails = ['Temp: ' + weatherData.current.temp + ' °F', 'Wind: ' + weatherData.current.wind_speed + ' MPH', 'Humidity: ' + weatherData.current.humidity + '%', 'UV Index: ' + weatherData.current.uvi]
+                                        //create temp
+                                        var tempEL = $('<p>')
+                                            .addClass('card-text')
+                                            .text('Temp: ' + weatherData.daily[i].temp.max)
+                                        //create wind
+                                        var windEL = $('<p>')
+                                            .addClass('card-text')
+                                            .text('Wind: ' + weatherData.daily[i].wind_speed + ' MPH')
+                                        // create humidity
+                                        var humidityEL = $('<p>')
+                                            .addClass('card-text')
+                                            .text('Humidity: ' + weatherData.daily[i].humidity + '%')
 
                                         //append cardDivEl to the #five-day container
                                         fiveDayEl.append(cardDivEl);
@@ -166,6 +179,12 @@ function getWeather(city) {
                                         cardBodyDivEl.append(cardTitleEl);
                                         //append icon to card body
                                         cardBodyDivEl.append(forecastIconEl);
+                                        //append temp details to card body
+                                        cardBodyDivEl.append(tempEL);
+                                        //append wind details to card body
+                                        cardBodyDivEl.append(windEL);
+                                        //append humidity details to card body
+                                        cardBodyDivEl.append(humidityEL);
                                     }
                                 })
                             }
