@@ -80,7 +80,7 @@ function getWeather(city) {
                                     for (var i = 0; i < currWeatherDetails.length; i++) {
                                         //create an indiviual list item and append to ul
 
-
+                                        
                                         if (currWeatherDetails[i] === 'UV Index: ' + weatherData.current.uvi) {
 
                                             var currWeatherListItem = $('<li>')
