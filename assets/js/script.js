@@ -30,10 +30,31 @@ var userFormEL = $('#city-search');
 var cityInputEl = $('#city');
 var currentWeatherEl = $('#current-weather');
 var fiveDayEl = $('#five-day');
+var searchHistoryEl = $('#search-history');
 var currentDay = moment().format('M/DD/YYYY');
 const weatherIconUrl = 'http://openweathermap.org/img/wn/';
 
 // END GLOBAL VARIABLES //
+
+//funciton to create history buttons
+function searchHistory(city) {
+    var searchHistoryBtn = $('<button>')
+        .addClass('btn')
+        .text(city)
+        .on('click', function () {
+            $('#current-weather').empty();
+            $('#five-day').empty();
+            getWeather(city);
+        })
+        .attr({
+            type: 'button',
+            id: 'search-history-btn'
+        });
+
+
+    // append btn to search history div
+    searchHistoryEl.append(searchHistoryBtn);
+}
 
 //function to get weather data from apiUrl
 function getWeather(city) {
@@ -54,15 +75,13 @@ function getWeather(city) {
                             if (weatherResponse.ok) {
                                 weatherResponse.json().then(function (weatherData) {
                                     console.log(weatherData);
-                                    // store the city that was searched in local storage
-                                    localStorage.setItem(city, city);
 
                                     // ** START CURRENT DAY DISPLAY ** //
 
                                     // get the weather icon from city
                                     var weatherIcon = weatherData.current.weather[0].icon;
                                     var cityCurrentWeatherIcon = weatherIconUrl + weatherIcon + '.png';
-                                    console.log(cityCurrentWeatherIcon);
+
                                     // create h2 to display city + current day + current weather icon
                                     var currentWeatherHeadingEl = $('<h2>')
                                         .text(city + ' (' + currentDay + ')');
@@ -207,18 +226,18 @@ function submitCitySearch(event) {
 
     if (city) {
         getWeather(city);
+        searchHistory(city);
         cityInputEl.text = '';
     } else {
         alert('Please enter a city');
     }
 }
 
-// on click of search button get user input for city and fetch api data
+// on submission of user data get user input for city and fetch api data
 userFormEL.on('submit', submitCitySearch);
 
 // on click of search button - empty the current weather and 5-day forecast info
 $('#search-btn').on('click', function () {
-    console.log('clicked');
     $('#current-weather').empty();
     $('#five-day').empty();
 })
