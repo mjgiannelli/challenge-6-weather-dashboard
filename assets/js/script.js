@@ -123,7 +123,12 @@ function getWeather(city) {
 
                                     // ** START 5-DAY FORECAST DISPLAY ** //
 
-                                    
+                                    // create header
+                                    var fiveDayHeaderEl = $('<h2>')
+                                    .text('5-Day Forecast:');
+
+                                    fiveDayEl.append(fiveDayHeaderEl);
+
                                 })
                             }
                         })
