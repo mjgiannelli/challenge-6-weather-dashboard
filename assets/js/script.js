@@ -31,7 +31,7 @@ var cityInputEl = $('#city');
 var currentWeatherEl = $('#current-weather');
 var fiveDayEl = $('#five-day');
 var currentDay = moment().format('M/DD/YYYY');
-var weatherIconUrl = 'http://openweathermap.org/img/wn/'
+const weatherIconUrl = 'http://openweathermap.org/img/wn/';
 
 // END GLOBAL VARIABLES //
 
@@ -54,7 +54,6 @@ function getWeather(city) {
                             if (weatherResponse.ok) {
                                 weatherResponse.json().then(function (weatherData) {
                                     console.log(weatherData);
-                                    console.log(weatherData.current.weather[0].icon)
                                     // store the city that was searched in local storage
                                     localStorage.setItem(city, city);
 
@@ -123,12 +122,51 @@ function getWeather(city) {
 
                                     // ** START 5-DAY FORECAST DISPLAY ** //
 
-                                    // create header
-                                    // var fiveDayHeaderEl = $('<h2>')
-                                    // .text('5-Day Forecast:');
+                                    // create array for the dates for the next 5 days
 
-                                    // fiveDayEl.append(fiveDayHeaderEl);
+                                    var fiveDayArray = [];
 
+                                    for (var i = 0; i < 5; i++) {
+                                        let forecastDate = moment().add(i + 1, 'days').format('M/DD/YYYY');
+
+                                        fiveDayArray.push(forecastDate);
+                                    }
+
+                                    // for each date in the array create a card displaying temp, wind and humidity
+                                    for (var i = 0; i < fiveDayArray.length; i++) {
+                                        // create a div for each card
+                                        var cardDivEl = $('<div>')
+                                            .addClass('col3');
+
+                                        // create div for the card body
+                                        var cardBodyDivEl = $('<div>')
+                                            .addClass('card-body');
+
+                                        // create the card-title
+                                        var cardTitleEl = $('<h3>')
+                                            .addClass('card-title')
+                                            .text(fiveDayArray[i]);
+
+                                        // create the icon for current day weather
+                                        var forecastIcon = weatherData.daily[i].weather[0].icon;
+
+                                        var forecastIconEl = $('<img>')
+                                            .attr({
+                                                src: weatherIconUrl + forecastIcon + '.png',
+                                                alt: 'Weather Icon'
+                                            });
+
+                                        console.log(forecastIconEl);
+
+                                        //append cardDivEl to the #five-day container
+                                        fiveDayEl.append(cardDivEl);
+                                        //append cardBodyDivEL to cardDivEl
+                                        cardDivEl.append(cardBodyDivEl);
+                                        //append card title to card body
+                                        cardBodyDivEl.append(cardTitleEl);
+                                        //append icon to card body
+                                        cardBodyDivEl.append(forecastIconEl);
+                                    }
                                 })
                             }
                         })
