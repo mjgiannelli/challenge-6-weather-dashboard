@@ -42,25 +42,6 @@ h2 {
     font-weight: bold;
 }
 
-#search-area {
-    grid-area: 1 / 1 / 3 / 2;
-    margin-right: 2rem;
-}
-
-#current-weather {
-    grid-area: 1 / 2 / 2 / 3;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    border: .1rem solid black;
-    display: flex;
-    flex-direction: column;
-    padding-left: .5rem;
-}
-
-#five-day {
-    grid-area: 2 / 2 / 3 / 3;
-}
-
 #city {
     font-size: 2rem;
     width: 100%;
@@ -90,14 +71,8 @@ hr {
 }
 
 ul {
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    padding: 0;
     list-style-type: none;
     font-size: 3rem;
-    height: 100%;
-    justify-content: space-around;
     font-weight: bold;
 }
 
@@ -134,11 +109,68 @@ p {
     font-size: 2rem;
 }
 
-.cards {
+.card-body {
+    background-color: lightblue;
+}
+
+.spacebetween{
+    justify-content: space-around;
+}
+
+body {
+    min-height: 100vh;
+}
+
+.border {
+    border: 1px solid black;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.row {
     display: flex;
     flex-wrap: wrap;
 }
 
-.card-body {
-    background-color: lightblue;
+.col1 {
+    width: 33%;
 }
+
+.col2 {
+    width: 67%;
+}
+
+.col3 {
+    width: 18%;
+    
+}
+
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) {}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+    .col1 {
+        width: 100%;
+    }
+
+    .col2 {
+        width: 100%;
+    }
+
+    .col3 {
+        width: 100%;
+    }
+
+}
+
+/* // Large devices (desktops, 992px and up) */
+@media (max-width: 992px) {}
+
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (max-width: 1200px) {}

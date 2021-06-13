@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href='./assets/css/style.css'>
     <title>Weather Dashboard</title>
 </head>
@@ -14,9 +13,9 @@
 
     <header class="heading">Weather Dashboard</header>
 
-    <main id='container' class="container border border-primary">
-        <div class="row border border-primary">
-            <div class="col-md-4 border border-primary">
+    <main id='container' class="container">
+        <div class="row">
+            <div class="col1">
                 <div id='search-area'>
                     <h1 class='h1'>Search for a City:</h1>
                     <form id='city-search'>
@@ -28,13 +27,13 @@
                     </hr>
                 </div>
             </div>
-            <div class="col-md-8 border border-primary">
-                <div class="row">
-                    <div class='col-12' id='current-weather'></div>
-                </div>
+            <div class="col2">
+
+                <div id='current-weather'></div>
+
                 <h2>5-Day Forecast:</h2>
-                <div id='five-day' class="row">
-                    <div class='col-md-2'>
+                <div id='five-day' class="row spacebetween">
+                    <div class='col3'>
                         <div class='card-body'>
                             <h3 class='card-title'>Tomorrow</h3>
                             <img class='current-weather-icon' src='http://openweathermap.org/img/wn/01d.png'>
@@ -43,7 +42,7 @@
                             <p class="card-text">Humidity</p>
                         </div>
                     </div>
-                    <div class='col-md-2'>
+                    <div class='col3'>
                         <div class='card-body'>
                             <h3 class='card-title'>Tomorrow</h3>
                             <img class='current-weather-icon' src='http://openweathermap.org/img/wn/01d.png'>
@@ -52,7 +51,7 @@
                             <p class="card-text">Humidity</p>
                         </div>
                     </div>
-                    <div class='col-md-2'>
+                    <div class='col3'>
                         <div class='card-body'>
                             <h3 class='card-title'>Tomorrow</h3>
                             <img class='current-weather-icon' src='http://openweathermap.org/img/wn/01d.png'>
@@ -61,7 +60,7 @@
                             <p class="card-text">Humidity</p>
                         </div>
                     </div>
-                    <div class='col-md-2'>
+                    <div class='col3'>
                         <div class='card-body'>
                             <h3 class='card-title'>Tomorrow</h3>
                             <img class='current-weather-icon' src='http://openweathermap.org/img/wn/01d.png'>
@@ -70,7 +69,7 @@
                             <p class="card-text">Humidity</p>
                         </div>
                     </div>
-                    <div class='col-md-2'>
+                    <div class='col3'>
                         <div class='card-body'>
                             <h3 class='card-title'>Tomorrow</h3>
                             <img class='current-weather-icon' src='http://openweathermap.org/img/wn/01d.png'>
@@ -82,57 +81,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- <div id='five-day'>
-            <h2>5-Day Forecast:</h2>
-            <div class = 'cards'>
-                <div class='card-body'>
-                    <h3 class='card-title'>Tomorrow</h3>
-                    <img class='current-weather-icon' src='http://openweathermap.org/img/wn/01d.png'>
-                    <p class="card-text">Temp</p>
-                    <p class="card-text">Wind</p>
-                    <p class="card-text">Humidity</p>
-                </div>
-    
-    
-                <div class='card-body'>
-                    <h3 class='card-title'>Tomorrow</h3>
-                    <img class='current-weather-icon' src='http://openweathermap.org/img/wn/01d.png'>
-                    <p class="card-text">Temp</p>
-                    <p class="card-text">Wind</p>
-                    <p class="card-text">Humidity</p>
-                </div>
-    
-    
-                <div class='card-body'>
-                    <h3 class='card-title'>Tomorrow</h3>
-                    <img class='current-weather-icon' src='http://openweathermap.org/img/wn/01d.png'>
-                    <p class="card-text">Temp</p>
-                    <p class="card-text">Wind</p>
-                    <p class="card-text">Humidity</p>
-                </div>
-    
-    
-                <div class='card-body'>
-                    <h3 class='card-title'>Tomorrow</h3>
-                    <img class='current-weather-icon' src='http://openweathermap.org/img/wn/01d.png'>
-                    <p class="card-text">Temp</p>
-                    <p class="card-text">Wind</p>
-                    <p class="card-text">Humidity</p>
-                </div>
-    
-    
-                <div class='card-body'>
-                    <h3 class='card-title'>Tomorrow</h3>
-                    <img class='current-weather-icon' src='http://openweathermap.org/img/wn/01d.png'>
-                    <p class="card-text">Temp</p>
-                    <p class="card-text">Wind</p>
-                    <p class="card-text">Humidity</p>
-                </div>
-            </div>
-           
-
-        </div> -->
     </main>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
