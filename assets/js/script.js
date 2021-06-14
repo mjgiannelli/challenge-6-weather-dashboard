@@ -33,7 +33,9 @@ var fiveDayEl = $('#five-day');
 var searchHistoryEl = $('#search-history');
 var currentDay = moment().format('M/DD/YYYY');
 const weatherIconUrl = 'http://openweathermap.org/img/wn/';
-var searchHistoryArray = [];
+var searchHistoryArray = {
+    searchedCity: []
+};
 
 // END GLOBAL VARIABLES //
 
@@ -48,6 +50,20 @@ function titleCase(str) {
     // Directly return the joined string
     return splitStr.join(' ');
 }
+
+//load cities from local storage and recreate history buttons
+function loadSearchHistory() {
+    var searchHistoryArray = JSON.parse(localStorage.getItem('search history'));
+    console.log(searchHistoryArray);
+
+    //if nothing in localStorage, create a new object to track all user info
+    
+}
+
+//save to local storage
+function saveSearchHistory() {
+    localStorage.setItem('search history', JSON.stringify(searchHistoryArray));
+};
 
 //funciton to create history buttons
 function searchHistory(city) {
@@ -251,13 +267,14 @@ function submitCitySearch(event) {
     var city = titleCase(cityInputEl.val().trim());
 
 
-    if (searchHistoryArray.includes(city)) {
-        alert(city + ' is included in history below. Click the ' + city + ' button to get weather.')
-    } else if (city) {
+    // if (searchHistoryArray.includes(city)) {
+    //     alert(city + ' is included in history below. Click the ' + city + ' button to get weather.')
+    if (city) {
         getWeather(city);
         searchHistory(city);
-        searchHistoryArray.push(city);
-        console.log('Array: ' + searchHistoryArray);
+        searchHistoryArray.searchedCity.push(city);
+        saveSearchHistory();
+        console.log('Array: ' + searchHistoryArray.searchedCity);
         cityInputEl.val('');
     } else {
         alert('Please enter a city');
@@ -273,3 +290,6 @@ $('#search-btn').on('click', function () {
     $('#five-day').empty();
     $('#five-day-header').remove();
 })
+
+// load search history on refresh
+loadSearchHistory();
