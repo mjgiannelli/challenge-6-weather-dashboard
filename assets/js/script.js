@@ -33,9 +33,7 @@ var fiveDayEl = $('#five-day');
 var searchHistoryEl = $('#search-history');
 var currentDay = moment().format('M/DD/YYYY');
 const weatherIconUrl = 'http://openweathermap.org/img/wn/';
-var searchHistoryArray = {
-    searchedCity: []
-};
+var searchHistoryArray = loadSearchHistory();
 
 // END GLOBAL VARIABLES //
 
@@ -54,19 +52,20 @@ function titleCase(str) {
 //load cities from local storage and recreate history buttons
 function loadSearchHistory() {
     var searchHistoryArray = JSON.parse(localStorage.getItem('search history'));
-    console.log(searchHistoryArray);
 
-    //if nothing in localStorage, create a new object to track all user info
+    // if nothing in localStorage, create a new object to track all user info
     if (!searchHistoryArray) {
-        var searchHistoryArray = {
-            searchedCity: []
+        searchHistoryArray = {
+            searchedCity: [],
         };
+    } else {
+        //add search history buttons to page
+        for (var i = 0; i < searchHistoryArray.searchedCity.length; i++) {
+            searchHistory(searchHistoryArray.searchedCity[i]);
+        }
     }
 
-    //add search history buttons to page
-    for (var i = 0; i < searchHistoryArray.searchedCity.length; i++) {
-        searchHistory(searchHistoryArray.searchedCity[i]);
-    }
+    return searchHistoryArray;
 }
 
 //save to local storage
@@ -86,8 +85,7 @@ function searchHistory(city) {
             getWeather(city);
         })
         .attr({
-            type: 'button',
-            id: 'search-history-btn'
+            type: 'button'
         });
 
     // append btn to search history div
@@ -269,8 +267,13 @@ function getWeather(city) {
         });
 }
 
+//function to push button elements to 
+
 function submitCitySearch(event) {
     event.preventDefault();
+
+    //load search history
+    // loadSearchHistory();
 
     //get value from user input
     var city = titleCase(cityInputEl.val().trim());
@@ -283,7 +286,6 @@ function submitCitySearch(event) {
         searchHistory(city);
         searchHistoryArray.searchedCity.push(city);
         saveSearchHistory();
-        console.log('Array: ' + searchHistoryArray.searchedCity);
         cityInputEl.val('');
     } else {
         alert('Please enter a city');
@@ -301,4 +303,7 @@ $('#search-btn').on('click', function () {
 })
 
 // load search history on refresh
-loadSearchHistory();
+// loadSearchHistory();
+
+
+console.log(searchHistoryArray);
