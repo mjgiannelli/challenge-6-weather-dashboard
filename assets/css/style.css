@@ -49,8 +49,7 @@ h2 {
     font-size: 2rem;
     width: 100%;
     border-radius: .4rem;
-    border-top-color: white;
-    border-left-color: white;
+    border: .1rem solid black;
     height: 4.5rem;
     padding-bottom: .5rem;
     padding-top: 0px;
@@ -240,7 +239,7 @@ span {
     .card-body {
         background-color: #00334d;
         height: 20rem;
-        padding-left: 1%;
+        padding-left: 0;
         padding-top: 1%;
         display: flex;
         flex-direction: column;

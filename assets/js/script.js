@@ -27,8 +27,8 @@ var openWeatherApiKey = '26ba3a7e283acb9cd1e8665c6c3b319a';
 var openWeatherCoordinatesUrl = 'https://api.openweathermap.org/data/2.5/weather?q=';
 var oneCallUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat='
 var userFormEL = $('#city-search');
+var col2El = $('.col2');
 var cityInputEl = $('#city');
-var currentWeatherEl = $('#current-weather');
 var fiveDayEl = $('#five-day');
 var searchHistoryEl = $('#search-history');
 var currentDay = moment().format('M/DD/YYYY');
@@ -114,6 +114,12 @@ function getWeather(city) {
 
                                     // ** START CURRENT DAY DISPLAY ** //
 
+                                    //add div to hold current day details
+                                    var currentWeatherEl = $('<div>')
+                                        .attr({
+                                            id: 'current-weather'
+                                        })
+
                                     // get the weather icon from city
                                     var weatherIcon = weatherData.current.weather[0].icon;
                                     var cityCurrentWeatherIcon = weatherIconUrl + weatherIcon + '.png';
@@ -166,6 +172,8 @@ function getWeather(city) {
 
                                     }
 
+                                    //append curr weather div to col2 before #five-day
+                                    $('#five-day').before(currentWeatherEl);
                                     //append current weather heading to current weather div
                                     currentWeatherEl.append(currentWeatherHeadingEl);
                                     //append icon to current weather header
