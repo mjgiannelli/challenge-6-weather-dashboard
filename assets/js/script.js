@@ -227,7 +227,7 @@ function submitCitySearch(event) {
     if (city) {
         getWeather(city);
         searchHistory(city);
-        cityInputEl.text = '';
+        cityInputEl.val('');
     } else {
         alert('Please enter a city');
     }
