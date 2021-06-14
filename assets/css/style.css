@@ -148,6 +148,9 @@ body {
     
 }
 
+span {
+    padding: 0 1.5rem;
+}
 
 /* // Small devices (landscape phones, 576px and up) */
 @media (max-width: 576px) {}
