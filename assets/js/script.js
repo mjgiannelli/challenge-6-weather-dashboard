@@ -272,9 +272,6 @@ function getWeather(city) {
 function submitCitySearch(event) {
     event.preventDefault();
 
-    //load search history
-    // loadSearchHistory();
-
     //get value from user input
     var city = titleCase(cityInputEl.val().trim());
 
@@ -301,9 +298,3 @@ $('#search-btn').on('click', function () {
     $('#five-day').empty();
     $('#five-day-header').remove();
 })
-
-// load search history on refresh
-// loadSearchHistory();
-
-
-console.log(searchHistoryArray);
