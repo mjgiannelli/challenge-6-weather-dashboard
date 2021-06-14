@@ -79,7 +79,7 @@ function searchHistory(city) {
         .addClass('btn')
         .text(city)
         .on('click', function () {
-            $('#current-weather').empty();
+            $('#current-weather').remove();
             $('#five-day').empty();
             $('#five-day-header').remove();
             getWeather(city);
@@ -302,7 +302,7 @@ userFormEL.on('submit', submitCitySearch);
 
 // on click of search button - empty the current weather and 5-day forecast info
 $('#search-btn').on('click', function () {
-    $('#current-weather').empty();
+    $('#current-weather').remove();
     $('#five-day').empty();
     $('#five-day-header').remove();
 })
