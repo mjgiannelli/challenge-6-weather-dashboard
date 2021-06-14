@@ -141,6 +141,16 @@ function getWeather(city) {
 
                                     // ** START 5-DAY FORECAST DISPLAY ** //
 
+                                    //create h2 header for 5-day forecast
+                                    var fiveDayHeaderEl = $('<h2>')
+                                        .text('5-Day Forecast:')
+                                        .attr({
+                                            id: 'five-day-header'
+                                        })
+
+                                    //append 5 day forecast header to col2 after current weather div
+                                    $('#current-weather').after(fiveDayHeaderEl)
+
                                     // create array for the dates for the next 5 days
 
                                     var fiveDayArray = [];
@@ -190,6 +200,7 @@ function getWeather(city) {
                                             .addClass('card-text')
                                             .text('Humidity: ' + weatherData.daily[i].humidity + '%')
 
+
                                         //append cardDivEl to the #five-day container
                                         fiveDayEl.append(cardDivEl);
                                         //append cardBodyDivEL to cardDivEl
@@ -205,6 +216,8 @@ function getWeather(city) {
                                         //append humidity details to card body
                                         cardBodyDivEl.append(humidityEL);
                                     }
+
+                                    // ** END 5-DAY FORECAST DISPLAY ** //
                                 })
                             }
                         })
@@ -243,4 +256,5 @@ userFormEL.on('submit', submitCitySearch);
 $('#search-btn').on('click', function () {
     $('#current-weather').empty();
     $('#five-day').empty();
+    $('#five-day-header').remove();
 })
