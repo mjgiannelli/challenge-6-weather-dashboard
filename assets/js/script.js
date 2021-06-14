@@ -37,6 +37,18 @@ var searchHistoryArray = [];
 
 // END GLOBAL VARIABLES //
 
+// Define function to capitalize the first letter of a string
+function titleCase(str) {
+    var splitStr = str.toLowerCase().split(' ');
+    for (var i = 0; i < splitStr.length; i++) {
+        // You do not need to check if i is larger than splitStr length, as your for does that for you
+        // Assign it back to the array
+        splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+    }
+    // Directly return the joined string
+    return splitStr.join(' ');
+}
+
 //funciton to create history buttons
 function searchHistory(city) {
     var searchHistoryBtn = $('<button>')
@@ -45,6 +57,7 @@ function searchHistory(city) {
         .on('click', function () {
             $('#current-weather').empty();
             $('#five-day').empty();
+            $('#five-day-header').remove();
             getWeather(city);
         })
         .attr({
@@ -235,7 +248,9 @@ function submitCitySearch(event) {
     event.preventDefault();
 
     //get value from user input
-    var city = cityInputEl.val().trim();
+    var city = titleCase(cityInputEl.val().trim());
+
+
     if (searchHistoryArray.includes(city)) {
         alert(city + ' is included in history below. Click the ' + city + ' button to get weather.')
     } else if (city) {
