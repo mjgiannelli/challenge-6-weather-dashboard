@@ -33,6 +33,7 @@ var fiveDayEl = $('#five-day');
 var searchHistoryEl = $('#search-history');
 var currentDay = moment().format('M/DD/YYYY');
 const weatherIconUrl = 'http://openweathermap.org/img/wn/';
+var searchHistoryArray = [];
 
 // END GLOBAL VARIABLES //
 
@@ -50,7 +51,6 @@ function searchHistory(city) {
             type: 'button',
             id: 'search-history-btn'
         });
-
 
     // append btn to search history div
     searchHistoryEl.append(searchHistoryBtn);
@@ -223,10 +223,13 @@ function submitCitySearch(event) {
 
     //get value from user input
     var city = cityInputEl.val().trim();
-
-    if (city) {
+    if (searchHistoryArray.includes(city)) {
+        alert(city + ' is included in history below. Click the ' + city + ' button to get weather.')
+    } else if (city) {
         getWeather(city);
         searchHistory(city);
+        searchHistoryArray.push(city);
+        console.log('Array: ' + searchHistoryArray);
         cityInputEl.val('');
     } else {
         alert('Please enter a city');
