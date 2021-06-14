@@ -57,7 +57,16 @@ function loadSearchHistory() {
     console.log(searchHistoryArray);
 
     //if nothing in localStorage, create a new object to track all user info
-    
+    if (!searchHistoryArray) {
+        var searchHistoryArray = {
+            searchedCity: []
+        };
+    }
+
+    //add search history buttons to page
+    for (var i = 0; i < searchHistoryArray.searchedCity.length; i++) {
+        searchHistory(searchHistoryArray.searchedCity[i]);
+    }
 }
 
 //save to local storage
@@ -267,9 +276,9 @@ function submitCitySearch(event) {
     var city = titleCase(cityInputEl.val().trim());
 
 
-    // if (searchHistoryArray.includes(city)) {
-    //     alert(city + ' is included in history below. Click the ' + city + ' button to get weather.')
-    if (city) {
+    if (searchHistoryArray.searchedCity.includes(city)) {
+        alert(city + ' is included in history below. Click the ' + city + ' button to get weather.')
+    } else if (city) {
         getWeather(city);
         searchHistory(city);
         searchHistoryArray.searchedCity.push(city);
