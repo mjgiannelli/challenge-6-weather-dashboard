@@ -6,9 +6,41 @@
     font-size: 62.5%;
 }
 
+/* used to help determine layout */
 .border {
     border: 1px solid black;
 }
+
+.spacebetween{
+    justify-content: space-around;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col1 {
+    width: 20%;
+    margin: 0 auto;
+}
+
+.col2 {
+    width: 65%;
+    margin-right: auto;
+    margin-top: 1%;
+}
+
+.col3 {
+    width: 18%;
+    
+}
+
 
 /* make body full page size depending on viewport */
 body { min-height: 100vh; }
@@ -36,7 +68,7 @@ header {
     font-size: 3.25rem;
     margin: 2rem auto;
 }
-
+/* style the h2 */
 h2 {
     font-size: 3rem;
     font-weight: bold;
@@ -45,6 +77,7 @@ h2 {
     margin-left: 1%;
 }
 
+/* style the text area where user inputs city name */
 #city {
     font-size: 2rem;
     width: 100%;
@@ -56,13 +89,14 @@ h2 {
     padding-left: .5rem;
 }
 
+/* style the search button */
 #search-btn {
     margin-bottom: 2rem;
     background-color: #6699ff;
     color: white;
 }
 
-/* style the button */
+/* style the history buttons */
 .btn {
     font-size: 2rem;
     width: 100%;
@@ -74,15 +108,18 @@ h2 {
     padding: .7rem 0;
 }
 
+/* create the line break in search area */
 hr {
     border-top: .2rem solid rgba(0,0,0, 1);
 }
 
+/* style current weather container */
 #current-weather {
     height: 50%;
     border: .1rem solid black;
 }
 
+/* style the list in weather container */
 ul {
     list-style-type: none;
     font-size: 3rem;
@@ -118,17 +155,19 @@ ul {
     border-radius: .5rem;
 }
 
+/* add padding to the index on UVindex value */
+span {
+    padding: 0 1.5rem;
+}
+
+/* style the h3 header */
 h3 {
     font-weight: bold;
     font-size: 2rem;
     color: white;
 }
 
-p {
-    font-size: 2rem;
-    color: white;
-}
-
+/* style the .card-body */
 .card-body {
     background-color:#00334d;
     height: 20rem;
@@ -140,48 +179,13 @@ p {
     justify-content: space-around;
 }
 
-.spacebetween{
-    justify-content: space-around;
+/* style the weather details in the .card-body */
+p {
+    font-size: 2rem;
+    color: white;
 }
 
-body {
-    min-height: 100vh;
-}
-
-.border {
-    border: 1px solid black;
-}
-
-.container {
-    width: 80%;
-    margin: 0 auto;
-}
-
-.row {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.col1 {
-    width: 20%;
-    margin: 0 auto;
-}
-
-.col2 {
-    width: 65%;
-    margin-right: auto;
-    margin-top: 1%;
-}
-
-.col3 {
-    width: 18%;
-    
-}
-
-span {
-    padding: 0 1.5rem;
-}
-
+/* style the five-day-header */
 #five-day-header {
     margin-top: 1%;
     margin-bottom: 1%;
