@@ -142,7 +142,7 @@ function getWeather(city) {
                                     for (var i = 0; i < currWeatherDetails.length; i++) {
                                         //create an indiviual list item and append to ul
 
-
+                                        // run conditional to assign background color to UV index depending how high it is
                                         if (currWeatherDetails[i] === 'UV Index: ' + weatherData.current.uvi) {
 
                                             var currWeatherListItem = $('<li>')
@@ -163,6 +163,7 @@ function getWeather(city) {
 
                                             currWeatherListItem.append(uviItem);
 
+                                            //create every list item that isn't uvIndex
                                         } else {
                                             var currWeatherListItem = $('<li>')
                                                 .text(currWeatherDetails[i])
@@ -266,10 +267,12 @@ function getWeather(city) {
                             }
                         })
                 });
+                // if fetch goes through but Open Weather can't find details for city
             } else {
                 alert('Error: Open Weather could not find city')
             }
         })
+        // if fetch fails
         .catch(function (error) {
             alert('Unable to connect to Open Weather');
         });
@@ -283,7 +286,7 @@ function submitCitySearch(event) {
     //get value from user input
     var city = titleCase(cityInputEl.val().trim());
 
-
+    //prevent them from searching for cities stored in local storage
     if (searchHistoryArray.searchedCity.includes(city)) {
         alert(city + ' is included in history below. Click the ' + city + ' button to get weather.')
     } else if (city) {
@@ -291,7 +294,10 @@ function submitCitySearch(event) {
         searchHistory(city);
         searchHistoryArray.searchedCity.push(city);
         saveSearchHistory();
+        //empty the form text area
         cityInputEl.val('');
+        
+        //if user doesn't type in a city
     } else {
         alert('Please enter a city');
     }
