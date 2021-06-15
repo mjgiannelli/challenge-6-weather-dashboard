@@ -288,7 +288,8 @@ function submitCitySearch(event) {
 
     //prevent them from searching for cities stored in local storage
     if (searchHistoryArray.searchedCity.includes(city)) {
-        alert(city + ' is included in history below. Click the ' + city + ' button to get weather.')
+        alert(city + ' is included in history below. Click the ' + city + ' button to get weather.');
+        cityInputEl.val('');
     } else if (city) {
         getWeather(city);
         searchHistory(city);
