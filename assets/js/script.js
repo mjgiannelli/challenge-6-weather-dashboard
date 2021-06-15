@@ -110,7 +110,6 @@ function getWeather(city) {
                         .then(function (weatherResponse) {
                             if (weatherResponse.ok) {
                                 weatherResponse.json().then(function (weatherData) {
-                                    console.log(weatherData);
 
                                     // ** START CURRENT DAY DISPLAY ** //
 

@@ -158,6 +158,7 @@ ul {
 /* add padding to the index on UVindex value */
 span {
     padding: 0 1.5rem;
+    color: white;
 }
 
 /* style the h3 header */
