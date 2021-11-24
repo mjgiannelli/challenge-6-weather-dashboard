@@ -11,4 +11,4 @@
 ![Weather Dashboard Homepage](assets/images/weather_homepage.png)
 
 ## Link to Portfolio Website
-[Weather Dashboard Deployed Website](https://mjgiannelli.github.io/challenge-6-weather-dashboard/)
+[Weather Dashboard Deployed Website](https://mjgiannelli.github.io/weather-rain-or-shine/)
